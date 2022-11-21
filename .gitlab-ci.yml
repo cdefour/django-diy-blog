@@ -5,13 +5,13 @@ stages:
 
 blog_build:
   stage: build
-  build:
+  image:
     dockerfile: Dockerfile # use when named different
     context: .
 
 angular_tests_karma:
   stage: tests
-  build:
+  image:
     dockerfile: Dockerfile # use when named different
     context: .
   script:
