@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  blog_inst_01:
+    # image si on a une image sinon le build va faire docker build le dockerfile
+    # image: agar:latest
+    build:
+      dockerfile: Dockerfile # use when named different
+      context: .
+    ports:
+      # Variable environment et value    default 3000
+      - ${PORT_01:-8001}:8000
+#      - 3000:3000
+
+  # docker run -d -p 3001:3000 agar:latest
+  blog_inst_02:
+    # image: agar:latest
+    build: .
+    ports:
+      # Variable et valeur par defaut 3001
+      - ${PORT_02:-8002}:8000
+#      - 3001:3000
