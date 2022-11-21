@@ -1,0 +1,23 @@
+stages:
+  - build
+  - tests
+  - deploy
+
+blog_build:
+  stage: build
+  build:
+    dockerfile: Dockerfile # use when named different
+    context: .
+
+angular_tests_karma:
+  stage: tests
+  build:
+    dockerfile: Dockerfile # use when named different
+    context: .
+  script:
+    - python3 manage.py test
+
+deploy:
+  stage: deploy
+  script:
+    - docker-compose -p project-blog up -d
